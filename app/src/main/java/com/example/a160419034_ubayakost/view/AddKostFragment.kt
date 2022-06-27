@@ -31,6 +31,8 @@ private lateinit var dataBinding: FragmentAddKostBinding
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         dataBinding.kost = Kost("", "", "", "", "", "", "", "", "")
+
+        dataBinding.listener = this
     }
 
     override fun onButtonAddKost(v: View) {

@@ -11,6 +11,10 @@
         <variable
             name="kost"
             type="com.example.a160419034_ubayakost.model.Kost" />
+        
+        <variable
+            name="radioListener"
+            type="com.example.a160419034_ubayakost.view.RadioButtonListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,6 +70,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtInputNamaKost"
+                        android:text="@={kost.nama}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -100,6 +105,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtWilayahInput"
+                        android:text="@={kost.wilayah}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
@@ -109,32 +115,12 @@
                     android:id="@+id/textView18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:text="Jenis"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.493"
+                    app:layout_constraintHorizontal_bias="0.486"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxPerempuan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="72dp"
-                    android:text="Perempuan"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxLaki"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="64dp"
-                    android:layout_marginTop="4dp"
-                    android:text="Laki-Laki"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
                 <TextView
                     android:id="@+id/textView15"
@@ -163,6 +149,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtInputDescription"
+                        android:text="@={kost.desc}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -194,6 +181,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtInputAlamat"
+                        android:text="@={kost.address}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -226,6 +214,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtInputHarga"
+                        android:text="@={kost.harga}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -234,12 +223,12 @@
                     android:id="@+id/textView20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="8dp"
                     android:text="Photo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txtInputPhoto"
@@ -257,8 +246,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView20">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtInputUrl"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="@={kost.photo}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -273,6 +264,61 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtInputPhoto" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Rating"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtRating"
+                        android:text="@={kost.rating}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+                    <RadioButton
+                        android:id="@+id/radioPria"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:tag="1"
+                        android:text="Pria" />
+
+                    <RadioButton
+                        android:id="@+id/radioWanita"
+                        android:layout_width="match_parent"
+
+                        android:tag="2"
+                        android:layout_height="wrap_content"
+                        android:text="Wanita" />
+                </RadioGroup>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
