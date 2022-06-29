@@ -16,9 +16,6 @@
         <action
             android:id="@+id/actionToAddKost"
             app:destination="@id/addKostFragment" />
-        <action
-            android:id="@+id/actionHomeToEdit"
-            app:destination="@id/editKostFragment" />
     </fragment>
     <fragment
         android:id="@+id/kostDetailFragment"
@@ -83,18 +80,14 @@
         android:name="com.example.a160419034_ubayakost.view.LoginFragment"
         android:label="LoginFragment" >
         <action
-            android:id="@+id/actionHome"
-            app:destination="@id/itemHome" />
-        <action
             android:id="@+id/actionRegister"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
-    <fragment
-        android:id="@+id/editKostFragment"
-        android:name="com.example.a160419034_ubayakost.view.EditKostFragment"
-        android:label="EditKostFragment" >
-        <argument
-            android:name="uuid"
-            app:argType="integer" />
-    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.a160419034_ubayakost.view.MainActivity"
+        android:label="MainActivity" />
 </navigation>

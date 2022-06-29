@@ -26,15 +26,21 @@ class LoginFragment : Fragment(), UserLoginListener, UserRegisterListener {
     ): View? {
         // Inflate the layout for this fragment
         dataBinding= DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
-        dataBinding.loginListener=this
-        dataBinding.registListener=this
+
+        dataBinding.loginListener = this
+        dataBinding.registListener = this
+
         return dataBinding.root
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel= ViewModelProvider(this).get(DetailViewModel::class.java)
         dataBinding.user= User("", "")
+
+
     }
 
     override fun onUserLogin(v: View) {
@@ -48,7 +54,7 @@ class LoginFragment : Fragment(), UserLoginListener, UserRegisterListener {
         }
         else if (viewModel.result=="SUCCESS") {
             Toast.makeText(v.context, "WELCOME!!", Toast.LENGTH_SHORT).show()
-            val action = LoginFragmentDirections.actionHome()
+            val action = LoginFragmentDirections.actionLoginFragmentToMainActivity()
             Navigation.findNavController(v).navigate(action)
 
         }
