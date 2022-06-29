@@ -80,10 +80,14 @@
         android:name="com.example.a160419034_ubayakost.view.LoginFragment"
         android:label="LoginFragment" >
         <action
-            android:id="@+id/actionHome"
-            app:destination="@id/itemHome" />
-        <action
             android:id="@+id/actionRegister"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.a160419034_ubayakost.view.MainActivity"
+        android:label="MainActivity" />
 </navigation>
