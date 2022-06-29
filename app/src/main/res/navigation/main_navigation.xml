@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_kost_detail" >
         <argument
             android:name="kostId"
-            app:argType="string" />
+            app:argType="integer" />
         <action
             android:id="@+id/actionToFavorite"
             app:destination="@id/itemFavorite" />
@@ -71,4 +71,8 @@
         android:name="com.example.a160419034_ubayakost.view.VoucherFragment"
         android:label="fragment_voucher"
         tools:layout="@layout/fragment_voucher" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.a160419034_ubayakost.view.RegisterFragment"
+        android:label="RegisterFragment" />
 </navigation>

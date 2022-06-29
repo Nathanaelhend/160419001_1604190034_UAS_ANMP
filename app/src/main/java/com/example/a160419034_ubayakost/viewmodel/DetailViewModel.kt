@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.a160419034_ubayakost.model.Kost
 import com.example.a160419034_ubayakost.model.Pesan
+import com.example.a160419034_ubayakost.model.User
 import com.example.a160419034_ubayakost.util.buildDb
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
@@ -28,6 +29,21 @@ class DetailViewModel(application: Application) : AndroidViewModel(application),
             db.kostDao().insertAll(*kostList.toTypedArray())
         }
     }
+
+    fun addUser(userList: List<User>) {
+        launch {
+            val db = buildDb(getApplication())
+            db.userDao().insertAll(*userList.toTypedArray())
+        }
+    }
+
+    fun fetch(uuid:Int) {
+        launch {
+            val db = buildDb(getApplication())
+            kostLD.value = db.kostDao().selectKost(uuid)
+        }
+    }
+
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
