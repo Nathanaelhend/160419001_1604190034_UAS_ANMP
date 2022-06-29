@@ -15,6 +15,14 @@ interface KostDetailClickListener {
     fun onKostDetailClick(view: View)
 }
 
+interface UserLoginListener {
+    fun onUserLogin(v: View)
+}
+
+interface UserRegisterListener {
+    fun onUserRegister(v: View)
+}
+
 interface RadioButtonListener {
     fun onRadioClick(view: View, priority: Int, obj: Kost)
 }

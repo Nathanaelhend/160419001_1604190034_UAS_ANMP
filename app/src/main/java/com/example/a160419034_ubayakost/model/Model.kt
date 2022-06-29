@@ -28,9 +28,9 @@ data class Kost(
 @Entity
 data class User(
     @ColumnInfo(name = "username")
-    var username:String?,
+    var username:String,
     @ColumnInfo(name = "password")
-    var password:String?
+    var password:String
 )
 {
     @PrimaryKey(autoGenerate = true)
