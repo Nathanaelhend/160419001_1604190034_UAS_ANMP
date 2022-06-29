@@ -27,6 +27,7 @@ class LoginFragment : Fragment(), UserLoginListener, UserRegisterListener {
         // Inflate the layout for this fragment
         dataBinding= DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         dataBinding.loginListener=this
+        dataBinding.registListener=this
         return dataBinding.root
     }
 

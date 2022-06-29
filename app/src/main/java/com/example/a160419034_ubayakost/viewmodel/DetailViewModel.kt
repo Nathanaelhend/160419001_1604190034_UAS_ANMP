@@ -34,6 +34,13 @@ class DetailViewModel(application: Application) : AndroidViewModel(application),
         }
     }
 
+    fun update(kost: Kost) {
+        launch {
+            val db = buildDb(getApplication())
+            db.kostDao().update(kost)
+        }
+    }
+
     fun addUser(userList: List<User>) {
         launch {
             val db = buildDb(getApplication())

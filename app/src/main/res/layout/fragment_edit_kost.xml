@@ -5,27 +5,27 @@
 
     <data>
         <variable
-            name="listener"
-            type="com.example.a160419034_ubayakost.view.KostAddClickListener" />
+            name="editSave"
+            type="com.example.a160419034_ubayakost.view.KostSaveChangesListener" />
 
         <variable
             name="kost"
             type="com.example.a160419034_ubayakost.model.Kost" />
-        
-        <variable
-            name="radioListener"
-            type="com.example.a160419034_ubayakost.view.RadioButtonListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ConstrainLayout"
+        android:id="@+id/frameLayout5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AddKostFragment">
+        tools:context=".EditKostFragment">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Tambahkan Kost Baru"
+                    android:text="Edit Kost"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -70,9 +70,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editNamaKost"
-                        android:text="@={kost.nama}"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="@={kost.nama}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,9 +105,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editWilayahInput"
-                        android:text="@={kost.wilayah}"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:text="@={kost.wilayah}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -216,9 +216,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editHarga"
-                        android:text="@={kost.harga}"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="@={kost.harga}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -261,8 +261,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
-                    android:text="Tambahkan"
-                    android:onClick="@{listener.onButtonAddKost}"
+                    android:onClick="@{(view) -> editSave.onSaveChangeClick(view, kost)}"
+                    android:text="SAVE EDIT"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtInputPhoto" />
@@ -281,9 +281,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editRating"
-                        android:text="@={kost.rating}"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="@={kost.rating}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -317,8 +317,8 @@
                         android:id="@+id/radioWanita"
                         android:layout_width="match_parent"
 
-                        android:tag="2"
                         android:layout_height="wrap_content"
+                        android:tag="2"
                         android:text="Wanita" />
                 </RadioGroup>
 
@@ -346,13 +346,12 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editPhone"
-                        android:text="@={kost.phone}"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="@={kost.phone}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

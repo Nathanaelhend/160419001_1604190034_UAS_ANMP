@@ -12,6 +12,10 @@
             name="detailListener"
             type="com.example.a160419034_ubayakost.view.KostDetailClickListener" />
 
+        <variable
+            name="editListener"
+            type="com.example.a160419034_ubayakost.view.KostEditClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,9 +68,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="150dp"
                     android:layout_marginEnd="8dp"
-                    android:text="View More"
-                    android:tag="@{kost.uuid}"
                     android:onClick="@{detailListener::onKostDetailClick}"
+                    android:tag="@{kost.uuid}"
+                    android:text="View More"
+                    android:textColor="#E91E63"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textKostName" />
@@ -120,6 +125,32 @@
                     android:text="@{kost.harga}"
                     app:layout_constraintStart_toStartOf="@+id/textJenis"
                     app:layout_constraintTop_toBottomOf="@+id/textJenis" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="155dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="#FFFFFF"
+
+                    app:tint="#E91E63"
+                    app:layout_constraintEnd_toStartOf="@+id/editButton"
+                    app:layout_constraintTop_toBottomOf="@+id/textKostName"
+                    app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+                <ImageButton
+                    android:id="@+id/editButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="155dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:onClick="@{editListener::onButtonEditKost}"
+                    app:tint="#E91E63"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/textKostName"
+                    app:srcCompat="@drawable/ic_baseline_edit_24" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

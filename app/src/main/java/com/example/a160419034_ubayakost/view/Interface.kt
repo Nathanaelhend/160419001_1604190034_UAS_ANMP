@@ -7,6 +7,14 @@ interface KostAddClickListener {
     fun onButtonAddKost(v: View)
 }
 
+interface  KostEditClickListener {
+    fun onButtonEditKost(v: View)
+}
+
+interface KostSaveChangesListener {
+    fun onSaveChangeClick(view: View, obj: Kost)
+}
+
 interface UserAddClickListener {
     fun onButtonAddUser(v: View)
 }
