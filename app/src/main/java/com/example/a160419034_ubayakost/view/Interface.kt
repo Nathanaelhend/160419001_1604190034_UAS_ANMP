@@ -15,6 +15,10 @@ interface KostSaveChangesListener {
     fun onSaveChangeClick(view: View, obj: Kost)
 }
 
+interface KostDeleteClickListener {
+    fun onButtonDeleteKost(v: View)
+}
+
 interface UserAddClickListener {
     fun onButtonAddUser(v: View)
 }

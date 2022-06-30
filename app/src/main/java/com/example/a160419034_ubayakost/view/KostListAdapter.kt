@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_kost_list.view.*
 import kotlinx.android.synthetic.main.kost_list_item.view.*
 
 class KostListAdapter(val kostList: ArrayList<Kost>) : RecyclerView
-.Adapter<KostListAdapter.KostListViewHolder>(), KostDetailClickListener, KostEditClickListener {
+.Adapter<KostListAdapter.KostListViewHolder>(), KostDetailClickListener, KostEditClickListener, KostDeleteClickListener {
     class KostListViewHolder(var view: KostListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KostListViewHolder {
@@ -31,22 +31,6 @@ class KostListAdapter(val kostList: ArrayList<Kost>) : RecyclerView
             holder.view.kost = kost
             holder.view.detailListener = this@KostListAdapter
             holder.view.editListener = this
-
-//        val kost = kostList[position]
-//        with(holder.view) {
-//            textKostName.text = kost.nama
-//            textWilayah.text = kost.wilayah
-//            textJenis.text = kost.jenis
-//            textRating.text = kost.rating
-//            txtHarga.text = kost.harga
-//            buttonDetail.setOnClickListener {
-//                val action = KostListFragmentDirections.actionKostDetail(kost.uuid.toString())
-//                Navigation.findNavController(it).navigate(action)
-//            }
-////            imageKostPhoto.loadImage(kost.photo, progressLoadingPhoto)
-//        }
-
-
 
     }
     override fun getItemCount() =kostList.size
@@ -67,5 +51,11 @@ class KostListAdapter(val kostList: ArrayList<Kost>) : RecyclerView
         val uuid = view.tag.toString().toInt()
         val action = KostListFragmentDirections.actionHomeToEdit(uuid)
         Navigation.findNavController(view).navigate(action)
+    }
+
+    override fun onButtonDeleteKost(v: View) {
+        val uuid = v.tag.toString().toInt()
+        val action = KostListFragmentDirections.actionHomeToEdit(uuid)
+        Navigation.findNavController(v).navigate(action)
     }
 }

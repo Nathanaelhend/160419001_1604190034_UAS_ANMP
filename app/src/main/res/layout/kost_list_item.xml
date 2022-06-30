@@ -16,6 +16,10 @@
             name="editListener"
             type="com.example.a160419034_ubayakost.view.KostEditClickListener" />
 
+        <variable
+            name="deleteListener"
+            type="com.example.a160419034_ubayakost.view.KostDeleteClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
