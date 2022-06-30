@@ -14,7 +14,7 @@ interface KostDao {
     suspend fun selectKost(id:Int): Kost
 
     @Query("UPDATE kost SET nama = :nama, jenis = :jenis, rating = :rating, wilayah = :wilayah, descr = :desc, phone = :phone, harga = :harga, address = :address WHERE uuid = :id")
-    suspend fun update(id: Int, nama: String, jenis: String, rating: String, wilayah: String, desc: String, phone: String, harga: String, address: String)
+    suspend fun update(id: Int, nama: String, jenis: Int, rating: String, wilayah: String, desc: String, phone: String, harga: String, address: String)
 
     @Update
     suspend fun update(kost: Kost)

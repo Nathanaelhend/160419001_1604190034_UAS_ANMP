@@ -6,36 +6,29 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a160419034_ubayakost.R
+import com.example.a160419034_ubayakost.databinding.MessageListItemBinding
 import com.example.a160419034_ubayakost.model.Kost
-import com.example.a160419034_ubayakost.model.Pesan
+import com.example.a160419034_ubayakost.model.Message
 import kotlinx.android.synthetic.main.message_list_item.view.*
 
-class MessageListAdapter(val messageList: ArrayList<Pesan>) : RecyclerView
+class MessageListAdapter(val messageList: ArrayList<Message>) : RecyclerView
 .Adapter<MessageListAdapter.messageViewHolder>(){
-    class messageViewHolder(var view : View) : RecyclerView.ViewHolder(view)
+    class messageViewHolder(var view : MessageListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): messageViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.message_list_item, parent, false)
+        val view = MessageListItemBinding.inflate(inflater, parent, false)
         return messageViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: messageViewHolder, position: Int) {
         val message = messageList[position]
-        with(holder.view){
-            txtMessage.text = message.isi
-            buttonMessage.setOnClickListener {
-                val action = MessageListFragmentDirections.actionToMessageDetail(message.id.toString())
-                Navigation.findNavController(it).navigate(action)
-            }
-        }
+
+        holder.view.message = message
+
     }
 
     override fun getItemCount() = messageList.size
 
-    fun updateMessageList(newMessageList: ArrayList<Pesan>){
-        messageList.clear()
-        messageList.addAll(newMessageList)
-        notifyDataSetChanged()
-    }
+
 }

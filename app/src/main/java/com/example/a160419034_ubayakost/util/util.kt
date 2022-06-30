@@ -17,7 +17,7 @@ import java.lang.Exception
 val DB_NAME = "newkostdb"
 
 @BindingAdapter("imageUrl", "progressBar")
-fun loadImageFromUrl(view: ImageView, url: String, pb: ProgressBar) {
+fun loadImageFromUrl(view: ImageView, url: String?, pb: ProgressBar) {
     view.loadImage(url,pb)
 }
 
@@ -56,7 +56,7 @@ val MIGRATION_2_3 = object : Migration(2, 3) {
 val MIGRATION_3_4 = object : Migration(3, 4) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL(
-            "ALTER TABLE user ADD COLUMN username STRING DEFAULT NULL"
+            "ALTER TABLE message ADD COLUMN isi STRING DEFAULT NULL"
         )
     }
 }

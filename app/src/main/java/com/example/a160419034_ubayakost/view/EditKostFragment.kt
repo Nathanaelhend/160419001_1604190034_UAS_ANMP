@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.a160419034_ubayakost.R
 import com.example.a160419034_ubayakost.databinding.FragmentAddKostBinding
 import com.example.a160419034_ubayakost.databinding.FragmentEditKostBinding
@@ -40,6 +41,8 @@ class EditKostFragment : Fragment(), KostSaveChangesListener {
         val uuid = EditKostFragmentArgs.fromBundle(requireArguments()).uuid
         viewModel.fetch(uuid)
 
+        dataBinding.editSave = this
+
         observeView()
     }
 
@@ -52,6 +55,7 @@ class EditKostFragment : Fragment(), KostSaveChangesListener {
     override fun onSaveChangeClick(view: View, obj: Kost) {
         viewModel.update(obj)
         Toast.makeText(view.context, "Update Success", Toast.LENGTH_SHORT).show()
+        Navigation.findNavController(view).popBackStack()
     }
 
 

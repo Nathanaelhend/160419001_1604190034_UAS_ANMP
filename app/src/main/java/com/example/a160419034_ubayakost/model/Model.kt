@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName
 data class Kost(
     @SerializedName("nama")
     var nama:String?,
+    @ColumnInfo(name = "jenis")
     var jenis:String?,
     @SerializedName("rating")
     var rating:String?,
@@ -26,21 +27,14 @@ data class Kost(
 }
 
 @Entity
-data class User(
-    @ColumnInfo(name = "username")
-    var username:String,
-    @ColumnInfo(name = "password")
-    var password:String
+data class Message(
+    @ColumnInfo(name = "isi")
+    var isi:String?,
 )
 {
     @PrimaryKey(autoGenerate = true)
     var id:Int= 0
 }
-
-data class Pesan(
-    var id:String?,
-    var isi:String?,
-    var description:String?)
 
 data class Favorite(
     var id:String?,

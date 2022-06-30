@@ -8,10 +8,10 @@ import com.example.a160419034_ubayakost.util.MIGRATION_1_2
 import com.example.a160419034_ubayakost.util.MIGRATION_2_3
 import com.example.a160419034_ubayakost.util.MIGRATION_3_4
 
-@Database(entities = arrayOf(Kost::class, User::class), version = 4)
+@Database(entities = arrayOf(Kost::class, Message::class), version = 4)
 abstract class KostDatabase: RoomDatabase(){
     abstract fun kostDao(): KostDao
-    abstract fun userDao(): UserDao
+    abstract fun messageDao(): MessageDao
 
     companion object {
         @Volatile

@@ -39,6 +39,16 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
         }
     }
 
+    fun deleteKost(kost: Kost)
+    {
+        launch {
+            val db = Room.databaseBuilder(getApplication(), KostDatabase::class.java,
+                "newkostdb").build()
+            db.kostDao().deleteKost(kost)
+            KostLD.value = db.kostDao().selectAllKost()
+        }
+    }
+
 //    fun MessageRefresh() {
 //
 //        LoadErrorLiveData.value = false

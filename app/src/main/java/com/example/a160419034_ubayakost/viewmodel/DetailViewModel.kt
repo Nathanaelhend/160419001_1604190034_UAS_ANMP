@@ -10,8 +10,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.a160419034_ubayakost.model.Kost
-import com.example.a160419034_ubayakost.model.Pesan
-import com.example.a160419034_ubayakost.model.User
+import com.example.a160419034_ubayakost.model.Message
 import com.example.a160419034_ubayakost.util.buildDb
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
@@ -23,9 +22,7 @@ import kotlin.coroutines.CoroutineContext
 class DetailViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
     private var job = Job()
     val kostLD = MutableLiveData<Kost>()
-    val UserLD = MutableLiveData<User>()
 
-    var result=""
 
     fun addKost(kostList: List<Kost>) {
         launch {
@@ -34,42 +31,17 @@ class DetailViewModel(application: Application) : AndroidViewModel(application),
         }
     }
 
+    fun addMessage(messageList: List<Message>) {
+        launch {
+            val db = buildDb(getApplication())
+            db.messageDao().insertAll(*messageList.toTypedArray())
+        }
+    }
+
     fun update(kost: Kost) {
         launch {
             val db = buildDb(getApplication())
             db.kostDao().update(kost)
-        }
-    }
-
-    fun delete(kost: Kost) {
-        launch {
-            val db = buildDb(getApplication())
-            db.kostDao().deleteKost(kost)
-        }
-    }
-
-    fun addUser(userList: List<User>) {
-        launch {
-            val db = buildDb(getApplication())
-            db.userDao().insertAll(*userList.toTypedArray())
-        }
-    }
-
-    fun login(username: String, password:String) {
-        launch {
-            val db = buildDb(getApplication())
-            if (username==""&&password=="") {
-                result="EMPTY"
-                Log.d("Global", "Please fill username or password!")
-            }
-            else if (username != UserLD.value?.username&&password!=UserLD.value?.password) {
-                result="WRONG"
-                Log.d("Global", "Username or Password is wrong")
-            } else {
-                result="SUCCESS"
-                Log.d("Global", "Login Success")
-            }
-            UserLD.value=db.userDao().selectLogin(username, password)
         }
     }
 

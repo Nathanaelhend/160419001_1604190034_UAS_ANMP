@@ -225,12 +225,12 @@
                     android:id="@+id/textView20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:text="Photo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout13" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txtInputPhoto"
@@ -296,32 +296,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 
-                <RadioGroup
-                    android:id="@+id/radioGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView18">
-
-                    <RadioButton
-                        android:id="@+id/radioPria"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-
-                        android:tag="1"
-                        android:text="Pria" />
-
-                    <RadioButton
-                        android:id="@+id/radioWanita"
-                        android:layout_width="match_parent"
-
-                        android:layout_height="wrap_content"
-                        android:tag="2"
-                        android:text="Wanita" />
-                </RadioGroup>
-
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
@@ -349,6 +323,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@={kost.phone}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Jenis"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editJenis"
+                        android:text="@={kost.jenis}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

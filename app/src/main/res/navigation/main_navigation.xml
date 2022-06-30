@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/itemHome">
 
     <fragment
         android:id="@+id/itemHome"
@@ -43,17 +43,8 @@
         android:label="fragment_message_list"
         tools:layout="@layout/fragment_message_list" >
         <action
-            android:id="@+id/actionToMessageDetail"
-            app:destination="@id/messageDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/messageDetailFragment"
-        android:name="com.example.a160419034_ubayakost.view.MessageDetailFragment"
-        android:label="fragment_message_detail"
-        tools:layout="@layout/fragment_message_detail" >
-        <argument
-            android:name="messageId"
-            app:argType="string" />
+            android:id="@+id/action_itemMessage_to_addMessageFragment"
+            app:destination="@id/addMessageFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemFavorite"
@@ -75,25 +66,6 @@
         android:label="fragment_voucher"
         tools:layout="@layout/fragment_voucher" />
     <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.example.a160419034_ubayakost.view.RegisterFragment"
-        android:label="RegisterFragment" />
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.a160419034_ubayakost.view.LoginFragment"
-        android:label="LoginFragment" >
-        <action
-            android:id="@+id/actionRegister"
-            app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
-    </fragment>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.a160419034_ubayakost.view.MainActivity"
-        android:label="MainActivity" />
-    <fragment
         android:id="@+id/editKostFragment"
         android:name="com.example.a160419034_ubayakost.view.EditKostFragment"
         android:label="EditKostFragment" >
@@ -101,4 +73,8 @@
             android:name="uuid"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/addMessageFragment"
+        android:name="com.example.a160419034_ubayakost.view.AddMessageFragment"
+        android:label="AddMessageFragment" />
 </navigation>

@@ -16,10 +16,6 @@
             name="editListener"
             type="com.example.a160419034_ubayakost.view.KostEditClickListener" />
 
-        <variable
-            name="deleteListener"
-            type="com.example.a160419034_ubayakost.view.KostDeleteClickListener" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -129,19 +125,6 @@
                     android:text="@{kost.harga}"
                     app:layout_constraintStart_toStartOf="@+id/textJenis"
                     app:layout_constraintTop_toBottomOf="@+id/textJenis" />
-
-                <ImageButton
-                    android:id="@+id/deleteButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="155dp"
-                    android:layout_marginEnd="8dp"
-                    android:backgroundTint="#FFFFFF"
-
-                    app:tint="#E91E63"
-                    app:layout_constraintEnd_toStartOf="@+id/editButton"
-                    app:layout_constraintTop_toBottomOf="@+id/textKostName"
-                    app:srcCompat="@drawable/ic_baseline_delete_24" />
 
                 <ImageButton
                     android:id="@+id/editButton"

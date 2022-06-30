@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a160419034_ubayakost.R
+import com.example.a160419034_ubayakost.model.Kost
 import com.example.a160419034_ubayakost.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
 
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_kost_list.*
 class KostListFragment : Fragment() {
     private lateinit var viewModel: ListViewModel
     private var kostListAdapter = KostListAdapter(arrayListOf())
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,19 +36,18 @@ class KostListFragment : Fragment() {
         recViewVoucher.layoutManager = LinearLayoutManager(context)
         recViewVoucher.adapter = kostListAdapter
 
-//        refreshLayoutVoucher.setOnRefreshListener {
-//            recViewVoucher.visibility = View.GONE
-//
-//            progresLoad.visibility = View.VISIBLE
-//            viewModel.refresh()
-//            refreshLayoutVoucher.isRefreshing = false
-//            txtErrorVoucher.visibility= View.GONE
-//        }
+        refreshLayoutVoucher.setOnRefreshListener {
+            recViewVoucher.visibility = View.GONE
+
+            progresLoad.visibility = View.VISIBLE
+            viewModel.refresh()
+            refreshLayoutVoucher.isRefreshing = false
+            txtErrorVoucher.visibility= View.GONE
+        }
         fabAddKost.setOnClickListener {
             val action = KostListFragmentDirections.actionToAddKost()
             Navigation.findNavController(it).navigate(action)
         }
-
         observeViewModel()
     }
 
@@ -55,9 +56,9 @@ class KostListFragment : Fragment() {
         viewModel.KostLD.observe(viewLifecycleOwner){
             kostListAdapter.updateKostList(it)
         }
-        viewModel.LoadErrorLiveData.observe(viewLifecycleOwner){
-            txtErrorVoucher.visibility = if(it) View.VISIBLE else View.GONE
-        }
+//        viewModel.LoadErrorLiveData.observe(viewLifecycleOwner){
+//            txtErrorVoucher.visibility = if(it) View.VISIBLE else View.GONE
+//        }
 //        viewModel.loadingLiveData.observe(viewLifecycleOwner){
 //            if(it){ //sedang loading
 //                recViewVoucher.visibility = View.GONE
