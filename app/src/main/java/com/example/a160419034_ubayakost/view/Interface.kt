@@ -7,7 +7,7 @@ interface KostAddClickListener {
     fun onButtonAddKost(v: View)
 }
 
-interface  KostEditClickListener {
+interface KostEditClickListener {
     fun onButtonEditKost(v: View)
 }
 

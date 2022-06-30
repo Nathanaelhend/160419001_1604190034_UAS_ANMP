@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.a160419034_ubayakost.R
 import com.example.a160419034_ubayakost.databinding.FragmentAddKostBinding
@@ -27,7 +28,9 @@ class EditKostFragment : Fragment(), KostSaveChangesListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        dataBinding = FragmentEditKostBinding.inflate(inflater, container, false)
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout
+            .fragment_edit_kost, container, false)
+        //dataBinding = FragmentEditKostBinding.inflate(inflater, container, false)
         return dataBinding.root
     }
 
