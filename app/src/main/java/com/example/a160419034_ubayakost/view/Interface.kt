@@ -15,12 +15,16 @@ interface KostSaveChangesListener {
     fun onSaveChangeClick(view: View, obj: Kost)
 }
 
+interface KostDetailClickListener {
+    fun onKostDetailClick(view: View)
+}
+
 interface MessageAddClickListener {
     fun onButtonAddMessage(v: View)
 }
 
-interface KostDetailClickListener {
-    fun onKostDetailClick(view: View)
+interface VoucherAddClickListener {
+    fun onButtonAddVoucher(v: View)
 }
 
 interface RadioButtonListener {

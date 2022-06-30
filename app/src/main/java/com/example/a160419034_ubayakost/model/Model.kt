@@ -45,9 +45,13 @@ data class Favorite(
     var photo: String?,
     var harga: String?)
 
+@Entity
 data class Voucher(
-    var id:String?,
     var judul:String?,
     var description: String?,
     var expDate: String?,
     var photo: String?)
+{
+    @PrimaryKey(autoGenerate = true)
+    var id:Int= 0
+}

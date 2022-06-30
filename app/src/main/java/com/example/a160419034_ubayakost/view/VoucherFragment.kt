@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a160419034_ubayakost.R
 import com.example.a160419034_ubayakost.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
 import kotlinx.android.synthetic.main.fragment_kost_list.txtErrorVoucher
 import kotlinx.android.synthetic.main.fragment_voucher.*
-import kotlinx.android.synthetic.main.fragment_kost_list.recViewVoucher as recViewVoucher1
-import kotlinx.android.synthetic.main.fragment_voucher.refreshLayoutVoucher as refreshLayoutVoucher1
+import kotlinx.android.synthetic.main.voucher_list_item.*
 
 class VoucherFragment : Fragment() {
 
@@ -31,6 +31,7 @@ class VoucherFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
 //        viewModel.showVoucher()
 
+
         recViewVoucher.layoutManager = LinearLayoutManager(context)
         recViewVoucher.adapter = voucherListAdapter
 
@@ -41,6 +42,11 @@ class VoucherFragment : Fragment() {
 //            viewModel.showVoucher()
             refreshLayoutVoucher.isRefreshing = false
             txtErrorVoucher.visibility= View.GONE
+        }
+
+        fabAddVoucher.setOnClickListener {
+            val action = KostListFragmentDirections.actionToAddKost()
+            Navigation.findNavController(it).navigate(action)
         }
 
         observeViewModel()
@@ -55,11 +61,11 @@ class VoucherFragment : Fragment() {
         }
         viewModel.loadingLiveData.observe(viewLifecycleOwner){
             if(it){ //sedang loading
-                recViewVoucher.visibility = View.GONE
+//                recViewVoucher.visibility = View.GONE
                 progressVoucher.visibility  = View.VISIBLE
             }
             else{
-                recViewVoucher.visibility = View.VISIBLE
+//                recViewVoucher.visibility = View.VISIBLE
                 progressVoucher.visibility = View.GONE
                 txtErrorVoucher.visibility = View.GONE
             }

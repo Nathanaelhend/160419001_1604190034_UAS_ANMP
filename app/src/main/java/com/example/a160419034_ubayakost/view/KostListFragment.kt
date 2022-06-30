@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a160419034_ubayakost.R
-import com.example.a160419034_ubayakost.model.Kost
 import com.example.a160419034_ubayakost.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
 
@@ -33,15 +32,15 @@ class KostListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.refresh()
 
-        recViewVoucher.layoutManager = LinearLayoutManager(context)
-        recViewVoucher.adapter = kostListAdapter
+        recViewKost.layoutManager = LinearLayoutManager(context)
+        recViewKost.adapter = kostListAdapter
 
-        refreshLayoutVoucher.setOnRefreshListener {
-            recViewVoucher.visibility = View.GONE
+        refreshLayoutKost.setOnRefreshListener {
+            recViewKost.visibility = View.GONE
 
             progresLoad.visibility = View.VISIBLE
             viewModel.refresh()
-            refreshLayoutVoucher.isRefreshing = false
+            refreshLayoutKost.isRefreshing = false
             txtErrorVoucher.visibility= View.GONE
         }
         fabAddKost.setOnClickListener {

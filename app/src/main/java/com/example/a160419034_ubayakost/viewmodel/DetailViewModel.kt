@@ -11,6 +11,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.a160419034_ubayakost.model.Kost
 import com.example.a160419034_ubayakost.model.Message
+import com.example.a160419034_ubayakost.model.Voucher
 import com.example.a160419034_ubayakost.util.buildDb
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
@@ -35,6 +36,13 @@ class DetailViewModel(application: Application) : AndroidViewModel(application),
         launch {
             val db = buildDb(getApplication())
             db.messageDao().insertAll(*messageList.toTypedArray())
+        }
+    }
+
+    fun addVoucher(voucherList: List<Voucher>) {
+        launch {
+            val db = buildDb(getApplication())
+            db.voucherDao().insertAll(*voucherList.toTypedArray())
         }
     }
 

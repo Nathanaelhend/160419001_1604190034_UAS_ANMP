@@ -10,7 +10,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a160419034_ubayakost.R
 import com.example.a160419034_ubayakost.viewmodel.ListViewModel
-import kotlinx.android.synthetic.main.fragment_kost_list.*
 import kotlinx.android.synthetic.main.fragment_message_list.*
 import kotlinx.android.synthetic.main.fragment_message_list.recViewVoucher
 import kotlinx.android.synthetic.main.fragment_message_list.refreshLayoutVoucher

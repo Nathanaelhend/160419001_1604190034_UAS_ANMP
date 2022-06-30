@@ -7,11 +7,13 @@ import androidx.room.RoomDatabase
 import com.example.a160419034_ubayakost.util.MIGRATION_1_2
 import com.example.a160419034_ubayakost.util.MIGRATION_2_3
 import com.example.a160419034_ubayakost.util.MIGRATION_3_4
+import com.example.a160419034_ubayakost.util.MIGRATION_4_5
 
-@Database(entities = arrayOf(Kost::class, Message::class), version = 4)
+@Database(entities = arrayOf(Kost::class, Message::class, Voucher::class), version = 4)
 abstract class KostDatabase: RoomDatabase(){
     abstract fun kostDao(): KostDao
     abstract fun messageDao(): MessageDao
+    abstract fun voucherDao(): VoucherDao
 
     companion object {
         @Volatile
@@ -20,7 +22,7 @@ abstract class KostDatabase: RoomDatabase(){
 
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext, KostDatabase::class.java, "newkostdb")
-                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
                 .build()
 
         operator fun invoke(context: Context) {

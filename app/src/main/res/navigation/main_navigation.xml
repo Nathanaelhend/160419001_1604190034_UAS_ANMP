@@ -64,7 +64,11 @@
         android:id="@+id/itemVoucher"
         android:name="com.example.a160419034_ubayakost.view.VoucherFragment"
         android:label="fragment_voucher"
-        tools:layout="@layout/fragment_voucher" />
+        tools:layout="@layout/fragment_voucher" >
+        <action
+            android:id="@+id/actionVoucherToAdd"
+            app:destination="@id/addVoucherFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editKostFragment"
         android:name="com.example.a160419034_ubayakost.view.EditKostFragment"
@@ -77,4 +81,8 @@
         android:id="@+id/addMessageFragment"
         android:name="com.example.a160419034_ubayakost.view.AddMessageFragment"
         android:label="AddMessageFragment" />
+    <fragment
+        android:id="@+id/addVoucherFragment"
+        android:name="com.example.a160419034_ubayakost.view.AddVoucherFragment"
+        android:label="AddVoucherFragment" />
 </navigation>

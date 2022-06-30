@@ -37,7 +37,7 @@ fun ImageView.loadImage(url: String?, progressBar : ProgressBar){
 }
 
 fun buildDb(context: Context) = Room.databaseBuilder(context, KostDatabase::class.java, DB_NAME)
-    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
     .build()
 
 val MIGRATION_1_2 = object : Migration(1, 2) {
@@ -57,6 +57,14 @@ val MIGRATION_3_4 = object : Migration(3, 4) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL(
             "ALTER TABLE message ADD COLUMN isi STRING DEFAULT NULL"
+        )
+    }
+}
+
+val MIGRATION_4_5 = object : Migration(4, 5) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "ALTER TABLE voucher ADD COLUMN nama STRING DEFAULT NULL"
         )
     }
 }
