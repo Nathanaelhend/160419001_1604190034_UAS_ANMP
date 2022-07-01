@@ -11,10 +11,7 @@
         <variable
             name="kost"
             type="com.example.a160419034_ubayakost.model.Kost" />
-        
-        <variable
-            name="radioListener"
-            type="com.example.a160419034_ubayakost.view.RadioButtonListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

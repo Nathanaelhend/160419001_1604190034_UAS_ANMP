@@ -29,7 +29,7 @@ class VoucherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-//        viewModel.showVoucher()
+        viewModel.refreshVoucher()
 
 
         recViewVoucher.layoutManager = LinearLayoutManager(context)
@@ -39,13 +39,13 @@ class VoucherFragment : Fragment() {
             recViewVoucher.visibility = View.GONE
 
             progressVoucher.visibility = View.VISIBLE
-//            viewModel.showVoucher()
+            viewModel.refreshVoucher()
             refreshLayoutVoucher.isRefreshing = false
             txtErrorVoucher.visibility= View.GONE
         }
 
         fabAddVoucher.setOnClickListener {
-            val action = KostListFragmentDirections.actionToAddKost()
+            val action = VoucherFragmentDirections.actionVoucherToAdd()
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -53,23 +53,23 @@ class VoucherFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-//        viewModel.VoucherLiveData.observe(viewLifecycleOwner){
-//            voucherListAdapter.updateVoucherList(it)
+        viewModel.VoucherLD.observe(viewLifecycleOwner){
+            voucherListAdapter.updateVoucherList(it)
+        }
+//        viewModel.LoadErrorLiveData.observe(viewLifecycleOwner){
+//            txtErrorVoucher.visibility = if(it) View.VISIBLE else View.GONE
 //        }
-        viewModel.LoadErrorLiveData.observe(viewLifecycleOwner){
-            txtErrorVoucher.visibility = if(it) View.VISIBLE else View.GONE
-        }
-        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-            if(it){ //sedang loading
-//                recViewVoucher.visibility = View.GONE
-                progressVoucher.visibility  = View.VISIBLE
-            }
-            else{
-//                recViewVoucher.visibility = View.VISIBLE
-                progressVoucher.visibility = View.GONE
-                txtErrorVoucher.visibility = View.GONE
-            }
-        }
+//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
+//            if(it){ //sedang loading
+////                recViewVoucher.visibility = View.GONE
+//                progressVoucher.visibility  = View.VISIBLE
+//            }
+//            else{
+////                recViewVoucher.visibility = View.VISIBLE
+//                progressVoucher.visibility = View.GONE
+//                txtErrorVoucher.visibility = View.GONE
+//            }
+//        }
     }
 
 

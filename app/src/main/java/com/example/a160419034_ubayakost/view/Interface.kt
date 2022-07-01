@@ -27,6 +27,3 @@ interface VoucherAddClickListener {
     fun onButtonAddVoucher(v: View)
 }
 
-interface RadioButtonListener {
-    fun onRadioClick(view: View, priority: Int, obj: Kost)
-}

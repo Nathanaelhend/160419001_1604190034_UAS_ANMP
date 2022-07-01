@@ -25,6 +25,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
         get() = job + Dispatchers.Main
 
     val KostLD = MutableLiveData<List<Kost>>()
+    val VoucherLD = MutableLiveData<List<Voucher>>()
     val LoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
 
@@ -39,15 +40,16 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
         }
     }
 
-    fun deleteKost(kost: Kost)
-    {
+    fun refreshVoucher() {
+
+        LoadErrorLiveData.value = false
+        loadingLiveData.value = true
         launch {
-            val db = Room.databaseBuilder(getApplication(), KostDatabase::class.java,
-                "newkostdb").build()
-            db.kostDao().deleteKost(kost)
+            val db = buildDb(getApplication())
             KostLD.value = db.kostDao().selectAllKost()
         }
     }
+
 
 //    fun MessageRefresh() {
 //

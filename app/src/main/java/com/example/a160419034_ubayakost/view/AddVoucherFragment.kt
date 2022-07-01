@@ -34,7 +34,7 @@ class AddVoucherFragment : Fragment(), VoucherAddClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        dataBinding.voucher = Voucher("", "", "", "",)
+        dataBinding.voucher = Voucher("", "", "", "")
 
         dataBinding.listener = this
     }
