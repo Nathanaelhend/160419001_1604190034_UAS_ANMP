@@ -26,6 +26,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
 
     val KostLD = MutableLiveData<List<Kost>>()
     val VoucherLD = MutableLiveData<List<Voucher>>()
+    val MessageLD = MutableLiveData<List<Message>>()
     val LoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
 
@@ -46,7 +47,17 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
         loadingLiveData.value = true
         launch {
             val db = buildDb(getApplication())
-            KostLD.value = db.kostDao().selectAllKost()
+            VoucherLD.value = db.voucherDao().selectAllVoucher()
+        }
+    }
+
+    fun refreshMessage() {
+
+        LoadErrorLiveData.value = false
+        loadingLiveData.value = true
+        launch {
+            val db = buildDb(getApplication())
+            MessageLD.value = db.messageDao().selectAllMessage()
         }
     }
 

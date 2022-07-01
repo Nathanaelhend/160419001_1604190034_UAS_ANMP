@@ -9,6 +9,7 @@ import com.example.a160419034_ubayakost.R
 import com.example.a160419034_ubayakost.databinding.MessageListItemBinding
 import com.example.a160419034_ubayakost.model.Kost
 import com.example.a160419034_ubayakost.model.Message
+import com.example.a160419034_ubayakost.model.Voucher
 import kotlinx.android.synthetic.main.message_list_item.view.*
 
 class MessageListAdapter(val messageList: ArrayList<Message>) : RecyclerView
@@ -19,6 +20,12 @@ class MessageListAdapter(val messageList: ArrayList<Message>) : RecyclerView
         val inflater = LayoutInflater.from(parent.context)
         val view = MessageListItemBinding.inflate(inflater, parent, false)
         return messageViewHolder(view)
+    }
+
+    fun updateMessageList(newMessageList: List<Message>){
+        messageList.clear()
+        messageList.addAll(newMessageList)
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: messageViewHolder, position: Int) {

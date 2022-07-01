@@ -28,8 +28,9 @@ class MessageListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-//        viewModel.MessageRefresh()
+        viewModel.refreshMessage()
 
         recViewVoucher.layoutManager = LinearLayoutManager(context)
         recViewVoucher.adapter = messageListAdapter
@@ -52,22 +53,22 @@ class MessageListFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-//        viewModel.MessageLiveData.observe(viewLifecycleOwner){
-//            messageListAdapter.updateMessageList(it)
+        viewModel.MessageLD.observe(viewLifecycleOwner){
+            messageListAdapter.updateMessageList(it)
+        }
+//        viewModel.LoadErrorLiveData.observe(viewLifecycleOwner){
+//            textError.visibility = if(it) View.VISIBLE else View.GONE
 //        }
-        viewModel.LoadErrorLiveData.observe(viewLifecycleOwner){
-            textError.visibility = if(it) View.VISIBLE else View.GONE
-        }
-        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-            if(it){ //sedang loading
-                recViewVoucher.visibility = View.GONE
-                progressLoad.visibility  = View.VISIBLE
-            }
-            else{
-                recViewVoucher.visibility = View.VISIBLE
-                progressLoad.visibility = View.GONE
-                textError.visibility = View.GONE
-            }
-        }
+//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
+//            if(it){ //sedang loading
+//                recViewVoucher.visibility = View.GONE
+//                progressLoad.visibility  = View.VISIBLE
+//            }
+//            else{
+//                recViewVoucher.visibility = View.VISIBLE
+//                progressLoad.visibility = View.GONE
+//                textError.visibility = View.GONE
+//            }
+//        }
     }
 }

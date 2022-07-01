@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface VoucherDao {
     @Query("SELECT * FROM voucher ORDER BY id ASC")
-    suspend fun selectAllMessage(): List<Message>
+    suspend fun selectAllVoucher(): List<Voucher>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg voucher: Voucher)
