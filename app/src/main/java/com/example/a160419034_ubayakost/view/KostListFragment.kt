@@ -41,7 +41,7 @@ class KostListFragment : Fragment() {
             progresLoad.visibility = View.VISIBLE
             viewModel.refresh()
             refreshLayoutKost.isRefreshing = false
-            txtErrorVoucher.visibility= View.GONE
+            txtErrorKost.visibility= View.GONE
         }
         fabAddKost.setOnClickListener {
             val action = KostListFragmentDirections.actionToAddKost()

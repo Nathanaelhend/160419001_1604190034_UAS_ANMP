@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="@+id/recViewVoucher" />
 
             <TextView
-                android:id="@+id/txtErrorVoucher"
+                android:id="@+id/txtErrorKost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Error while loading data"
