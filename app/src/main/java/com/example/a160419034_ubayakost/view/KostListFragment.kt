@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a160419034_ubayakost.R
 import com.example.a160419034_ubayakost.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
+import kotlinx.android.synthetic.main.fragment_voucher.*
 
 
 class KostListFragment : Fragment() {
@@ -54,20 +55,16 @@ class KostListFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.KostLD.observe(viewLifecycleOwner){
             kostListAdapter.updateKostList(it)
+
+            if(it.isEmpty()){ //sedang loading
+                recViewKost.visibility = View.GONE
+                progresLoad.visibility  = View.VISIBLE
+            }
+            else{
+                recViewKost.visibility = View.VISIBLE
+                progresLoad.visibility = View.GONE
+                txtErrorKost.visibility = View.GONE
+            }
         }
-//        viewModel.LoadErrorLiveData.observe(viewLifecycleOwner){
-//            txtErrorVoucher.visibility = if(it) View.VISIBLE else View.GONE
-//        }
-//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-//            if(it){ //sedang loading
-//                recViewVoucher.visibility = View.GONE
-//                progresLoad.visibility  = View.VISIBLE
-//            }
-//            else{
-//                recViewVoucher.visibility = View.VISIBLE
-//                progresLoad.visibility = View.GONE
-//                txtErrorVoucher.visibility = View.GONE
-//            }
-//        }
     }
 }

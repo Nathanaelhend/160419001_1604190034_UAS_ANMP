@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a160419034_ubayakost.R
 import com.example.a160419034_ubayakost.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_message_list.*
-import kotlinx.android.synthetic.main.fragment_message_list.recViewVoucher
-import kotlinx.android.synthetic.main.fragment_message_list.refreshLayoutVoucher
+import kotlinx.android.synthetic.main.fragment_voucher.*
+
 
 class MessageListFragment : Fragment() {
 
@@ -32,15 +32,15 @@ class MessageListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.refreshMessage()
 
-        recViewVoucher.layoutManager = LinearLayoutManager(context)
-        recViewVoucher.adapter = messageListAdapter
+        recViewMessage.layoutManager = LinearLayoutManager(context)
+        recViewMessage.adapter = messageListAdapter
 
-        refreshLayoutVoucher.setOnRefreshListener {
-            recViewVoucher.visibility = View.GONE
+        refreshLayoutMessage.setOnRefreshListener {
+            recViewMessage.visibility = View.GONE
 
             progressLoad.visibility = View.VISIBLE
             viewModel.refresh()
-            refreshLayoutVoucher.isRefreshing = false
+            refreshLayoutMessage.isRefreshing = false
             textError.visibility= View.GONE
         }
 
@@ -55,20 +55,16 @@ class MessageListFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.MessageLD.observe(viewLifecycleOwner){
             messageListAdapter.updateMessageList(it)
+
+            if(it.isEmpty()){ //sedang loading
+                recViewMessage.visibility = View.GONE
+                progressLoad.visibility  = View.VISIBLE
+            }
+            else{
+                recViewMessage.visibility = View.VISIBLE
+                progressLoad.visibility = View.GONE
+                textError.visibility = View.GONE
+            }
         }
-//        viewModel.LoadErrorLiveData.observe(viewLifecycleOwner){
-//            textError.visibility = if(it) View.VISIBLE else View.GONE
-//        }
-//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-//            if(it){ //sedang loading
-//                recViewVoucher.visibility = View.GONE
-//                progressLoad.visibility  = View.VISIBLE
-//            }
-//            else{
-//                recViewVoucher.visibility = View.VISIBLE
-//                progressLoad.visibility = View.GONE
-//                textError.visibility = View.GONE
-//            }
-//        }
     }
 }

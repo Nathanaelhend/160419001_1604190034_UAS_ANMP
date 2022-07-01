@@ -7,7 +7,7 @@
     tools:context=".view.MessageListFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refreshLayoutVoucher"
+        android:id="@+id/refreshLayoutMessage"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,7 +16,7 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recViewVoucher"
+                android:id="@+id/recViewMessage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -55,21 +55,17 @@ class VoucherFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.VoucherLD.observe(viewLifecycleOwner){
             voucherListAdapter.updateVoucherList(it)
+
+            if(it.isEmpty()){ //sedang loading
+                recViewVoucher.visibility = View.GONE
+                progressVoucher.visibility  = View.VISIBLE
+            }
+            else{
+                recViewVoucher.visibility = View.VISIBLE
+                progressVoucher.visibility = View.GONE
+                txtErrorVoucher.visibility = View.GONE
+            }
         }
-//        viewModel.LoadErrorLiveData.observe(viewLifecycleOwner){
-//            txtErrorVoucher.visibility = if(it) View.VISIBLE else View.GONE
-//        }
-//        viewModel.loadingLiveData.observe(viewLifecycleOwner){
-//            if(it){ //sedang loading
-////                recViewVoucher.visibility = View.GONE
-//                progressVoucher.visibility  = View.VISIBLE
-//            }
-//            else{
-////                recViewVoucher.visibility = View.VISIBLE
-//                progressVoucher.visibility = View.GONE
-//                txtErrorVoucher.visibility = View.GONE
-//            }
-//        }
     }
 
 
